@@ -1,25 +1,188 @@
-// Quasar SCSS (& Sass) Variables
-// --------------------------------------------------
-// To customize the look and feel of this app, you can override
-// the Sass/SCSS variables found in Quasar's source Sass/SCSS files.
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-// Check documentation for full list of Quasar variables
+$primary: #b47fde;
+$secondary: #e0b3ff;
+$accent: #f8a8ff;
 
-// Your own variables (that are declared here) and Quasar's own
-// ones will be available out of the box in your .vue/.scss/.sass files
+$dark: #4b3860;
+$dark-page: #33223d;
 
-// It's highly recommended to change the default colors
-// to match your app's branding.
-// Tip: Use the "Theme Builder" on Quasar's documentation website.
+$positive: #4cd964;
+$negative: #ff5e5e;
+$info: #64b6f7;
+$warning: #ffbe3d;
 
-$primary   : #1976D2;
-$secondary : #26A69A;
-$accent    : #9C27B0;
+body {
+  font-family: 'Nunito', sans-serif;
+}
 
-$dark      : #1D1D1D;
-$dark-page : #121212;
+.bg-primary-light-100 {
+  background-color: #dec9f0;
+}
 
-$positive  : #21BA45;
-$negative  : #C10015;
-$info      : #31CCEC;
-$warning   : #F2C037;
+.bg-primary-light-200 {
+  background-color: #c8a5e8;
+}
+
+.bg-primary-light-400 {
+  background-color: #a260d5;
+}
+
+.bg-primary-light-500 {
+  background-color: #9142cb;
+}
+
+.text-primary-light-100 {
+  background-color: #dec9f0;
+}
+
+.text-primary-light-200 {
+  background-color: #c8a5e8;
+}
+
+.text-primary-light-400 {
+  background-color: #a260d5;
+}
+
+.text-primary-light-500 {
+  background-color: #9142cb;
+}
+
+.poppins-thin {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.poppins-extralight {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.poppins-light {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.poppins-regular {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.poppins-medium {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.poppins-semibold {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.poppins-bold {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.poppins-extrabold {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.poppins-black {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.poppins-thin-italic {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.poppins-extralight-italic {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.poppins-light-italic {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.poppins-regular-italic {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.poppins-medium-italic {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.poppins-semibold-italic {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.poppins-bold-italic {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.poppins-extrabold-italic {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.poppins-black-italic {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+body {
+  background-color: white; /* Cor de fundo da página */
+  overflow-x: hidden; /* Evita rolagem horizontal */
+  background-size: 100% 200px; /* Define o espaçamento vertical entre repetições */
+  background-repeat: repeat-y;
+}
+
+body::before,
+body::after {
+  content: '';
+  position: absolute;
+  background-color: $secondary;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+body::before {
+  width: 150px;
+  height: 150px;
+  top: -20px; /* Metade do tamanho negativo para cortar pela metade */
+  left: -45px; /* Metade do tamanho negativo para cortar pela metade */
+}
+
+body::after {
+  width: 100px;
+  height: 100px;
+  top: -30px; /* Metade do tamanho negativo para cortar pela metade */
+  right: -30px; /* Metade do tamanho negativo para cortar pela metade */
+}
