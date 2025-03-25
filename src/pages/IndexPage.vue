@@ -1,75 +1,57 @@
 <template>
   <q-page padding>
-    <div class="q-pa-md">
-      <h1 class="text-h4 text-primary text-weight-medium text-title">
+    <article class="q-pa-md">
+      <h1 class="text-h5 text-primary text-weight-medium text-title">
         Crie momentos customizados do seu bebê e relembre sempre que desejar.
       </h1>
       <h2 class="text-body2 text-weight-regular text-sub-title">
         Armazene na nuvem as fotos e vídeos de momentos importantes do seu bebê. Organize-os por
         mês, dia, ano... da forma que preferir.
       </h2>
-    </div>
-    <q-card flat>
-      <q-card-section class="text-warning text-center flex flex-center text-weight-bolder text-h6">
-        Como Funciona
-      </q-card-section>
-      <q-card-section>
-        <q-list>
-          <q-item
-            clickable
-            v-ripple
-            class="bg-secondary q-my-sm q-border-radius-lg border-radius"
-            dark
-            v-for="(step, key) in steps"
-            :key="key"
-          >
-            <q-item-section side>
-              <q-chip rounded color="white" class="text-primary text-caption" :label="key + 1" />
-            </q-item-section>
-            <q-item-section> {{ step }} </q-item-section>
-          </q-item>
-        </q-list>
-      </q-card-section>
-    </q-card>
-    <q-card flat>
-      <q-card-section class="text-warning text-center flex flex-center text-weight-bolder text-h6">
-        Destaques
-      </q-card-section>
-      <q-card-section> destaques </q-card-section>
-    </q-card>
-    <q-card flat>
-      <q-card-section class="text-warning text-center flex flex-center text-weight-bolder text-h6">
-        Planos
-      </q-card-section>
-      <q-card-section> planos </q-card-section>
-    </q-card>
-    <q-card flat>
-      <q-card-section class="text-warning text-center flex flex-center text-weight-bolder text-h6">
-        Perguntas Frequentes
-      </q-card-section>
-      <q-card-section>
-        <q-list>
-          <q-expansion-item
-            group="somegroup"
-            :label="frequencyQuestion.question"
-            class="bg-secondary q-my-sm q-border-radius-lg border-radius"
-            dark
-            v-for="(frequencyQuestion, key) in frequencyQuestions"
-            :key="key"
-          >
-            <q-card>
-              <q-card-section>
-                {{ frequencyQuestion.answer }}
-              </q-card-section>
-            </q-card>
-          </q-expansion-item>
-        </q-list>
-      </q-card-section>
-    </q-card>
+    </article>
+    <CardSection :title="'Como Funciona'">
+      <q-list>
+        <q-item
+          clickable
+          v-ripple
+          class="bg-secondary q-my-sm q-border-radius-lg border-radius"
+          dark
+          v-for="(step, key) in steps"
+          :key="key"
+        >
+          <q-item-section side>
+            <q-chip rounded color="white" class="text-primary text-caption" :label="key + 1" />
+          </q-item-section>
+          <q-item-section> {{ step }} </q-item-section>
+        </q-item>
+      </q-list>
+    </CardSection>
+    <CardSection :title="'Destaques'"></CardSection>
+    <CardSection :title="'Planos'"></CardSection>
+    <CardSection :title="'Perguntas Frequentes'">
+      <q-list>
+        <q-expansion-item
+          group="somegroup"
+          :label="frequencyQuestion.question"
+          class="bg-secondary q-my-sm q-border-radius-lg border-radius"
+          dark
+          v-for="(frequencyQuestion, key) in frequencyQuestions"
+          :key="key"
+        >
+          <q-card>
+            <q-card-section>
+              {{ frequencyQuestion.answer }}
+            </q-card-section>
+          </q-card>
+        </q-expansion-item>
+      </q-list>
+    </CardSection>
   </q-page>
 </template>
 
 <script setup lang="ts">
+import CardSection from 'src/components/CardSection.vue';
+
 const steps: Array<string> = [
   'Faça seu cadastro',
   'Crie sua timeline',
@@ -126,7 +108,7 @@ const frequencyQuestions: Array<FrequencyQuestion> = [
 
 <style type="css" scoped>
 .text-title {
-  line-height: 32px;
+  line-height: 26px;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 .text-sub-title {
