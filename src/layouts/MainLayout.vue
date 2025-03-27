@@ -48,6 +48,7 @@ const onScroll = (scroll: any) => {
 <style type="css" scoped>
 .img-logo {
   max-width: 100px;
+  margin-top: 20px;
 }
 .dev-box {
   border: 1px solid #33223d;
