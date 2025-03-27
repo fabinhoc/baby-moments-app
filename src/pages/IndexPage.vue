@@ -27,7 +27,9 @@
       </q-list>
     </CardSection>
     <CardSection :title="'Destaques'"></CardSection>
-    <CardSection :title="'Planos'"></CardSection>
+    <CardSection :title="'Planos'">
+      <PlanCard />
+    </CardSection>
     <CardSection :title="'Perguntas Frequentes'">
       <q-list>
         <q-expansion-item
@@ -51,6 +53,7 @@
 
 <script setup lang="ts">
 import CardSection from 'src/components/CardSection.vue';
+import PlanCard from 'src/components/PlanCard.vue';
 
 const steps: Array<string> = [
   'Faça seu cadastro',

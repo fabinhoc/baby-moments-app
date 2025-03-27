@@ -5,7 +5,7 @@ import messages from 'src/i18n';
 
 export type MessageLanguages = keyof typeof messages;
 // Type-define 'en-US' as the master schema for the resource
-export type MessageSchema = typeof messages['en-US'];
+export type MessageSchema = (typeof messages)['en-US'];
 
 // See https://vue-i18n.intlify.dev/guide/advanced/typescript.html#global-resource-schema-type-definition
 /* eslint-disable @typescript-eslint/no-empty-object-type */
@@ -23,9 +23,85 @@ declare module 'vue-i18n' {
 
 export default defineBoot(({ app }) => {
   const i18n = createI18n<{ message: MessageSchema }, MessageLanguages>({
-    locale: 'en-US',
     legacy: false,
+    locale: 'pt-BR',
+    fallbackLocale: 'en-US',
     messages,
+    datetimeFormats: {
+      'en-US': {
+        short: {
+          year: 'numeric',
+          month: 'numeric',
+          day: 'numeric',
+        },
+        long: {
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+        },
+        extended: {
+          day: '2-digit',
+          month: 'long',
+        },
+      } as const,
+      'pt-BR': {
+        short: {
+          year: 'numeric',
+          month: 'numeric',
+          day: 'numeric',
+        },
+        long: {
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+        },
+        extended: {
+          day: '2-digit',
+          month: 'long',
+        },
+      } as const,
+    },
+    numberFormats: {
+      'pt-BR': {
+        currency: {
+          style: 'currency',
+          currency: 'BRL',
+          useGrouping: true,
+          currencyDisplay: 'symbol',
+        },
+        decimal: {
+          style: 'decimal',
+          minimumSignificantDigits: 3,
+          maximumSignificantDigits: 5,
+        },
+        percent: {
+          style: 'percent',
+          useGrouping: false,
+        },
+      },
+      'en-US': {
+        currency: {
+          style: 'currency',
+          currency: 'USD',
+          notation: 'standard',
+        },
+        decimal: {
+          style: 'decimal',
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        },
+        percent: {
+          style: 'percent',
+          useGrouping: false,
+        },
+      },
+    } as const,
   });
 
   // Set i18n instance on app
