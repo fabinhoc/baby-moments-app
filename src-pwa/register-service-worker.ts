@@ -35,6 +35,8 @@ register(process.env.SERVICE_WORKER_FILE, {
       closeBtn: 'Atualizar',
       timeout: 10000,
       onDismiss() {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore: Ignorando erro do TypeScript sobre `window`
         window.location.reload();
       },
     });
