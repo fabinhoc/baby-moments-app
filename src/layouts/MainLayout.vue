@@ -15,6 +15,9 @@
     </q-header>
     <q-page-container>
       <router-view />
+      <q-page-sticky position="bottom-right" :offset="[18, 18]">
+        <q-btn @click="scrollToTop" fab icon="expand_less" color="accent" padding="sm" />
+      </q-page-sticky>
     </q-page-container>
 
     <q-footer class="" :reveal="true">
@@ -43,11 +46,18 @@ const onScroll = (scroll: any) => {
     headerClass.value = 'bg-transparent';
   }
 };
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth', // Para um comportamento de scroll suave
+  });
+};
 </script>
 
 <style type="css" scoped>
 .img-logo {
-  max-width: 100px;
+  max-width: 150px;
   margin-top: 20px;
 }
 .dev-box {

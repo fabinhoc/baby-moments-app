@@ -1,10 +1,10 @@
 <template>
   <q-page padding>
     <article class="q-pa-md">
-      <h1 class="text-h5 text-primary text-weight-medium text-title">
+      <h1 class="text-h4 text-primary text-weight-medium text-title">
         Crie momentos customizados do seu bebê e relembre sempre que desejar.
       </h1>
-      <h2 class="text-body2 text-weight-regular text-sub-title">
+      <h2 class="text-h5 text-weight-regular text-sub-title">
         Armazene na nuvem as fotos e vídeos de momentos importantes do seu bebê. Organize-os por
         mês, dia, ano... da forma que preferir.
       </h2>
@@ -111,11 +111,11 @@ const frequencyQuestions: Array<FrequencyQuestion> = [
 
 <style type="css" scoped>
 .text-title {
-  line-height: 26px;
+  line-height: 36px;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 .text-sub-title {
-  line-height: 20px;
+  line-height: 28px;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   color: #64b6f7;
 }

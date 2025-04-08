@@ -10,9 +10,9 @@ defineProps<{
 
 <template>
   <q-card flat>
-    <q-card-section class="text-warning text-center flex flex-center text-weight-bolder text-h6"
-      >{{ title }} ABCD</q-card-section
-    >
+    <q-card-section class="text-warning text-center flex flex-center text-weight-bolder text-h5">{{
+      title
+    }}</q-card-section>
     <q-card-section>
       <slot />
     </q-card-section>
