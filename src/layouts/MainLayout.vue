@@ -11,6 +11,8 @@
         <q-toolbar-title class="text-center">
           <q-img class="img-logo cursor-pointer" src="/logo.png"></q-img>
         </q-toolbar-title>
+
+        <q-btn icon="las la-sign-in-alt" flat color="black" round />
       </q-toolbar>
     </q-header>
     <q-page-container>
