@@ -14,7 +14,12 @@ declare module 'vue' {
 // good idea to move this instance creation inside of the
 // "export default () => {}" function below (which runs individually
 // for each client)
-const api = axios.create({ baseURL: 'https://api.example.com' });
+const api = axios.create({ baseURL: process.env.API_URL ?? '' });
+api.defaults.headers.common['Content-Type'] = 'application/json;charset=utf-8';
+api.defaults.headers.common['X-Localization'] = localStorage.getItem('user-lang') ?? 'pt-BR';
+api.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem(
+  '@baby-moments:token',
+)}`;
 
 export default defineBoot(({ app }) => {
   // for use inside Vue files (Options API) through this.$axios and this.$api
