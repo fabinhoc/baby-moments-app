@@ -5,13 +5,7 @@ defineOptions({
 </script>
 
 <template>
-  <q-layout view="lHh Lpr lFf" style="height: 100vh; overflow-y: hidden">
-    <div class="column items-center justify-evenly q-pa-xl">
-      <q-icon name="las la-unlock-alt" size="80px" color="primary-light-500"></q-icon>
-      <p class="text-bold text-uppercase text-h5 text-primary-light-500 q-mt-sm">
-        {{ $t('app.layouts.welcome') }}
-      </p>
-    </div>
+  <q-layout view="lHh Lpr lFf">
     <q-page-container>
       <router-view />
     </q-page-container>
