@@ -20,6 +20,9 @@ export default {
     date: 'Data inválida',
   },
   app: {
+    layouts: {
+      welcome: 'Bem-vindo!',
+    },
     components: {
       timelineForm: {
         title: 'Título',

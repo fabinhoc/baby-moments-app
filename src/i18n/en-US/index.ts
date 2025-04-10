@@ -23,6 +23,9 @@ export default {
     date: 'Invalid date',
   },
   app: {
+    layouts: {
+      welcome: 'Welcome!',
+    },
     components: {
       timelineForm: {
         title: 'Title',
