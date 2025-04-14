@@ -4,7 +4,17 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
-    children: [{ path: '', component: () => import('pages/IndexPage.vue') }],
+    children: [
+      { path: '', component: () => import('pages/IndexPage.vue') },
+      {
+        path: '/timelines',
+        name: 'list-timeline',
+        component: () => import('pages/timeline/IndexPage.vue'),
+        meta: {
+          requiresAuth: true,
+        },
+      },
+    ],
   },
 
   // Always leave this as last one,

@@ -5,7 +5,7 @@ import { useVuelidate } from '@vuelidate/core';
 import { required, email } from '@vuelidate/validators';
 import { useRouter } from 'vue-router';
 import useNotify from 'src/composables/useNotify';
-// import useAuthService from 'src/services/auth.service';
+import useAuthService from 'src/services/auth.service';
 
 defineOptions({
   name: 'FormLogin',
@@ -21,7 +21,7 @@ const rules = {
   password: { required },
 };
 const v$ = useVuelidate(rules, form);
-// const service = useAuthService();
+const service = useAuthService();
 const router = useRouter();
 const notify = useNotify();
 
@@ -33,8 +33,8 @@ const handleSubmit = async () => {
   try {
     const validate = await v$.value.$validate();
     if (!validate) return false;
-    // await service.login(form.value);
-    await router.push({ name: 'timeline-list' });
+    await service.login(form.value);
+    await router.push({ name: 'list-timeline' });
   } catch (error: any) {
     console.log(error);
     const message = error?.response?.data?.message ?? error;
