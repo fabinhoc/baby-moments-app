@@ -55,6 +55,23 @@
 <script setup lang="ts">
 import CardSection from 'src/components/CardSection.vue';
 import PlanCard from 'src/components/PlanCard.vue';
+import usePlanService from 'src/services/plan.service';
+import { onMounted } from 'vue';
+
+const service = usePlanService();
+
+onMounted(async () => {
+  await test();
+});
+
+const test = async () => {
+  try {
+    const t: any = await service.all();
+    console.log(t);
+  } catch (error: any) {
+    console.log(error);
+  }
+};
 
 const steps: Array<string> = [
   'Faça seu cadastro',

@@ -23,6 +23,9 @@ export default {
     date: 'Invalid date',
   },
   app: {
+    layouts: {
+      welcome: 'Welcome!',
+    },
     components: {
       timelineForm: {
         title: 'Title',
@@ -231,6 +234,11 @@ export default {
             'In accordance with LGPD regulations, all your personal data has been successfully removed.',
           btnBack: 'Back to home page',
         },
+      },
+      socialCallback: {
+        redirecting: 'Redirecting...',
+        errorMessage: 'An error ocurrence when Log In. Try again!',
+        backToLogin: 'Back to login',
       },
     },
   },

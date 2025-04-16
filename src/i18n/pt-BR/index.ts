@@ -20,6 +20,9 @@ export default {
     date: 'Data inválida',
   },
   app: {
+    layouts: {
+      welcome: 'Bem-vindo!',
+    },
     components: {
       timelineForm: {
         title: 'Título',
@@ -231,6 +234,11 @@ export default {
         sentence3:
           'De acordo com as normas LGPD todos os seus dados pessoais foram removidos com sucesso.',
         btnBack: 'Voltar para pagina inicial',
+      },
+      socialCallback: {
+        redirecting: 'Redirecionando...',
+        errorMessage: 'Ocorreu um erro ao realizar login. Tente novamente!',
+        backToLogin: 'Voltar para login',
       },
     },
   },
