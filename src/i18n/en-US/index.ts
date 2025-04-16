@@ -235,6 +235,11 @@ export default {
           btnBack: 'Back to home page',
         },
       },
+      socialCallback: {
+        redirecting: 'Redirecting...',
+        errorMessage: 'An error ocurrence when Log In. Try again!',
+        backToLogin: 'Back to login',
+      },
     },
   },
 };
