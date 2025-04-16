@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import LoginForm from 'src/components/auth/LoginForm.vue';
+
+const socialLogin = (provider: string) => {
+  window.location.href = `${process.env.API_URL}/auth/${provider}/redirect`;
+};
 </script>
 
 <template>
@@ -27,8 +31,13 @@ import LoginForm from 'src/components/auth/LoginForm.vue';
             Login com redes sociais
           </p>
           <div class="row justify-center q-gutter-sm">
-            <q-btn round icon="lab la-google-plus" class="text-google-plus" />
-            <q-btn round>
+            <q-btn
+              @click="socialLogin('google')"
+              round
+              icon="lab la-google-plus"
+              class="text-google-plus"
+            />
+            <q-btn @click="socialLogin('microsoft')" round>
               <q-icon>
                 <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
                   <path fill="#ff5722" d="M6 6H22V22H6z" />
