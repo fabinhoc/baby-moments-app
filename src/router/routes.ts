@@ -35,6 +35,43 @@ const routes: RouteRecordRaw[] = [
           requiresAuth: false,
         },
       },
+      {
+        path: 'social/callback/:token',
+        name: 'social-callback',
+        component: () => import('pages/auth/SocialCallbackPage.vue'),
+        meta: {
+          requiresAuth: false,
+        },
+      },
+      {
+        path: 'email-verification',
+        name: 'email-verification',
+        component: () => import('pages/auth/EmailVerificationPage.vue'),
+        meta: {
+          requiresAuth: true,
+        },
+      },
+      {
+        path: 'verify',
+        name: 'verify',
+        component: () => import('pages/auth/VerifyPage.vue'),
+      },
+      {
+        path: 'register',
+        name: 'register',
+        component: () => import('pages/auth/RegisterPage.vue'),
+        meta: {
+          requiresAuth: false,
+        },
+      },
+      {
+        path: 'forgot-password',
+        name: 'forgot-password',
+        component: () => import('pages/auth/ForgotPasswordPage.vue'),
+        meta: {
+          requiresAuth: false,
+        },
+      },
     ],
   },
 ];
