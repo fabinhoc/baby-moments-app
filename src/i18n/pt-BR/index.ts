@@ -227,6 +227,7 @@ export default {
       },
       register: {
         hasAnAccount: 'Já tenho uma conta',
+        title: 'Criar conta',
       },
       removeAccount: {
         sentence1: 'Que pena que desistiu de nós :(',

@@ -240,6 +240,10 @@ export default {
         errorMessage: 'An error ocurrence when Log In. Try again!',
         backToLogin: 'Back to login',
       },
+      register: {
+        hasAnAccount: 'I already an account',
+        title: 'Create an account',
+      },
     },
   },
 };

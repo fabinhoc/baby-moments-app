@@ -66,6 +66,8 @@ const handlePwdConfirmPassword = () => {
       lazy-rules
       outlined
       :rules="[() => !v$.name.required.$invalid || $t('validations.required')]"
+      rounded
+      dense
     />
     <q-input
       v-model="v$.email.$model"
@@ -76,6 +78,8 @@ const handlePwdConfirmPassword = () => {
         () => !v$.email.required.$invalid || $t('validations.required'),
         () => !v$.email.email.$invalid || $t('validations.email'),
       ]"
+      rounded
+      dense
     />
     <q-input
       v-model="v$.password.$model"
@@ -84,6 +88,8 @@ const handlePwdConfirmPassword = () => {
       lazy-rules
       outlined
       :rules="[() => !v$.password.required.$invalid || $t('validations.required')]"
+      rounded
+      dense
     >
       <template v-slot:append>
         <q-icon
@@ -105,6 +111,8 @@ const handlePwdConfirmPassword = () => {
           !v$.password_confirmation.sameAsPassword.$invalid ||
           $t('validations.passwordConfirmation'),
       ]"
+      rounded
+      dense
     >
       <template v-slot:append>
         <q-icon

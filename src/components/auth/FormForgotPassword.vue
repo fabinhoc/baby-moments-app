@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { ref, Ref } from 'vue';
-import { ForgotPasswordDto } from 'src/types/dto/ForgotPassword.dto';
+import { ref, type Ref } from 'vue';
+import { type ForgotPasswordDto } from 'src/types/dto/ForgotPassword.dto';
 import { useVuelidate } from '@vuelidate/core';
 import { required, email } from '@vuelidate/validators';
 import useAuthService from 'src/services/auth.service';
-import { useRouter } from 'vue-router';
 import useNotify from 'src/composables/useNotify';
 
 defineOptions({
@@ -19,7 +18,6 @@ const rules = {
 };
 const v$ = useVuelidate(rules, form);
 const service = useAuthService();
-const router = useRouter();
 const notify = useNotify();
 
 const handleSubmit = async () => {
@@ -27,7 +25,6 @@ const handleSubmit = async () => {
     const validate = await v$.value.$validate();
     if (!validate) return false;
     await service.forgotPassword(form.value);
-    router.push({ name: 'reset-password-confirmation' });
   } catch (error: any) {
     console.log(error);
     const message = error?.response?.data?.message ?? error;
@@ -47,6 +44,8 @@ const handleSubmit = async () => {
         () => !v$.email.required.$invalid || $t('validations.required'),
         () => !v$.email.email.$invalid || $t('validations.email'),
       ]"
+      rounded
+      dense
     />
     <q-btn
       type="submit"
