@@ -71,6 +71,7 @@ const handlePwdConfirmPassword = () => {
     />
     <q-input
       v-model="v$.email.$model"
+      type="email"
       :label="$t('app.components.formRegister.email')"
       lazy-rules
       outlined

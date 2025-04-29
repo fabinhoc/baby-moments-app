@@ -37,6 +37,7 @@ const handleSubmit = async () => {
   <q-form ref="myForm" class="q-gutter-y-lg" @submit.prevent="handleSubmit">
     <q-input
       v-model="v$.email.$model"
+      type="email"
       :label="$t('app.components.formForgotPassword.email')"
       lazy-rules
       outlined
