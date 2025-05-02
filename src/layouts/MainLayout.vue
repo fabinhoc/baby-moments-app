@@ -42,7 +42,8 @@ const scrollToTop = () => {
       <q-toolbar dark>
         <q-toolbar-title :class="$route.name === 'index' ? 'text-center' : ''">
           <q-img
-            :class="$route.name === 'index' ? 'img-logo ' : 'img-logo-mini'"
+            @click="$router.push({ name: 'index' })"
+            :class="!authStore.isLoggedIn ? 'img-logo ' : 'img-logo-mini'"
             class="cursor-pointer"
             src="/logo.png"
           ></q-img>
@@ -70,7 +71,12 @@ const scrollToTop = () => {
     <q-footer class="" :reveal="true">
       <q-card class="bg-dark">
         <q-card-section class="column items-center q-gutter-xs">
-          <q-img class="img-logo cursor-pointer" src="/logo.png" style="width: 70px"></q-img>
+          <q-img
+            @click="$router.push({ name: 'index' })"
+            class="img-logo cursor-pointer"
+            src="/logo.png"
+            style="width: 70px"
+          ></q-img>
           <span style="font-size: 10px">Copyright © 2025 - Todos os direitos reservados</span>
           <div class="dev-box" style="font-size: 8px">Feito por Fabio Dev.</div>
         </q-card-section>
@@ -87,6 +93,7 @@ const scrollToTop = () => {
 .img-logo-mini {
   max-width: 100px;
   margin-top: 10px;
+  float: left;
 }
 .dev-box {
   border: 1px solid #33223d;
