@@ -28,13 +28,18 @@ const logoutUser = async () => {
     flat
     rounded
     icon="las la-user"
-    :label="user.name"
     color="black"
     no-caps
     dropdown-icon="las la-angle-down"
     class="btn-user"
   >
     <q-list>
+      <q-item>
+        <q-item-section>
+          <q-item-label class="text-grey-6">Olá! {{ user.name }}</q-item-label>
+        </q-item-section>
+      </q-item>
+      <q-separator />
       <q-item clickable v-close-popup @click="$router.push({ name: 'profile' })">
         <q-item-section avatar>
           <q-avatar icon="las la-pen" text-color="black" flat round />

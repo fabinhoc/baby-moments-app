@@ -40,8 +40,12 @@ const scrollToTop = () => {
       @reveal="revealTest"
     >
       <q-toolbar dark>
-        <q-toolbar-title class="text-center">
-          <q-img class="img-logo cursor-pointer" src="/logo.png"></q-img>
+        <q-toolbar-title :class="$route.name === 'index' ? 'text-center' : ''">
+          <q-img
+            :class="$route.name === 'index' ? 'img-logo ' : 'img-logo-mini'"
+            class="cursor-pointer"
+            src="/logo.png"
+          ></q-img>
         </q-toolbar-title>
 
         <q-btn
@@ -80,9 +84,16 @@ const scrollToTop = () => {
   max-width: 150px;
   margin-top: 20px;
 }
+.img-logo-mini {
+  max-width: 100px;
+  margin-top: 10px;
+}
 .dev-box {
   border: 1px solid #33223d;
   border-radius: 5px;
   padding: 5px;
+}
+.body-linear-bg {
+  background: linear-gradient(to bottom, #c8a5e8, #9142cb);
 }
 </style>

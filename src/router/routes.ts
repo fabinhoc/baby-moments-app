@@ -5,7 +5,7 @@ const routes: RouteRecordRaw[] = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/IndexPage.vue') },
+      { path: '', name: 'index', component: () => import('pages/IndexPage.vue') },
       {
         path: '/timelines',
         name: 'list-timeline',

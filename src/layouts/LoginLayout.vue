@@ -1,6 +1,16 @@
 <script setup lang="ts">
+import { onBeforeUnmount, onMounted } from 'vue';
+
 defineOptions({
   name: 'LoginLayout',
+});
+
+onMounted(() => {
+  document.body.classList.add('main-layout-bg');
+});
+
+onBeforeUnmount(() => {
+  document.body.classList.remove('main-layout-bg');
 });
 </script>
 
@@ -13,7 +23,7 @@ defineOptions({
 </template>
 
 <style type="css">
-body {
+.main-layout-bg {
   background: hsla(272, 57%, 86%, 1);
 
   background: linear-gradient(

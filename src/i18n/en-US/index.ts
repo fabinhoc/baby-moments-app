@@ -119,6 +119,14 @@ export default {
         passwordConfirmation: 'Confirm password',
         register: 'Create account',
       },
+      itemTimeline: {
+        memoryUsage: 'Memory Usage',
+      },
+      cardSectionFirstTimeline: {
+        title: 'Start now by creating your first timeline.',
+        info: 'Give it a name, add emojis, write a cool phrase about your timeline.',
+        btnCreate: 'Create Timeline',
+      },
     },
     pages: {
       timeline: {

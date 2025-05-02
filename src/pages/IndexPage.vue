@@ -56,12 +56,17 @@
 import CardSection from 'src/components/CardSection.vue';
 import PlanCard from 'src/components/PlanCard.vue';
 import usePlanService from 'src/services/plan.service';
-import { onMounted } from 'vue';
+import { onBeforeUnmount, onMounted } from 'vue';
 
 const service = usePlanService();
 
 onMounted(async () => {
   await test();
+  document.body.classList.add('body-bg-white');
+});
+
+onBeforeUnmount(() => {
+  document.body.classList.remove('body-bg-white');
 });
 
 const test = async () => {
@@ -127,7 +132,7 @@ const frequencyQuestions: Array<FrequencyQuestion> = [
 ];
 </script>
 
-<style type="css" scoped>
+<style type="css">
 .text-title {
   line-height: 36px;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
@@ -139,5 +144,12 @@ const frequencyQuestions: Array<FrequencyQuestion> = [
 }
 .border-radius {
   border-radius: 10px;
+}
+
+.body-bg-white {
+  background: white !important; /* Cor de fundo da página */
+  overflow-x: hidden; /* Evita rolagem horizontal */
+  background-size: 100% 200px; /* Define o espaçamento vertical entre repetições */
+  background-repeat: repeat-y;
 }
 </style>
