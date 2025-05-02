@@ -24,7 +24,7 @@ export default {
       welcome: 'Bem-vindo!',
     },
     components: {
-      timelineForm: {
+      formTimeline: {
         title: 'Título',
         description: 'Descrição',
         save: 'Salvar',
