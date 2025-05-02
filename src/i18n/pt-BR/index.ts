@@ -38,6 +38,7 @@ export default {
         edit: 'Editar',
         signature: 'Minha assinatura',
         logout: 'Sair',
+        timelines: 'Minhas timelines',
       },
       momentForm: {
         title: 'Título',

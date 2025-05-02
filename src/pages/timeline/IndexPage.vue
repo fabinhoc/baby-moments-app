@@ -4,8 +4,8 @@ import CardSectionPageTitle from 'src/components/system/CardSectionPageTitle.vue
 import BreadCrumb from 'src/components/system/BreadCrumb.vue';
 import { type BreadCrumbType } from 'src/types/BreadCrumb.type';
 import { type TimelineType } from 'src/types/Timeline.type';
-import CardSectionFirstTimeline from 'src/components/system/CardSectionFirstTimeline.vue';
-import ItemTimeline from 'src/components/system/ItemTimeline.vue';
+import CardSectionFirstTimeline from 'src/components/timeline/CardSectionFirstTimeline.vue';
+import ItemTimeline from 'src/components/timeline/ItemTimeline.vue';
 
 const breadCrumb: BreadCrumbType = {
   label: 'Timelines',

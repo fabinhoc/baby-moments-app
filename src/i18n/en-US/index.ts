@@ -41,6 +41,7 @@ export default {
         edit: 'Edit',
         signature: 'My signature',
         logout: 'Logout',
+        timelines: 'My timelines',
       },
       momentForm: {
         title: 'Title',

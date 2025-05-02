@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import BtnConfig from 'src/components/BtnConfig.vue';
-import BtnUser from 'src/components/BtnUser.vue';
+import BtnConfig from 'src/components/system/BtnConfig.vue';
+import BtnUser from 'src/components/system/BtnUser.vue';
 import { useAuthStore } from 'src/stores/auth.store';
 import { ref } from 'vue';
 
