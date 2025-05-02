@@ -7,11 +7,13 @@ import { type TimelineType } from 'src/types/Timeline.type';
 import CardSectionFirstTimeline from 'src/components/timeline/CardSectionFirstTimeline.vue';
 import ItemTimeline from 'src/components/timeline/ItemTimeline.vue';
 
-const breadCrumb: BreadCrumbType = {
-  label: 'Timelines',
-  link: 'list-timelines',
-  icon: 'las la-code-branch',
-};
+const breadCrumbs: BreadCrumbType[] = [
+  {
+    label: 'Timelines',
+    link: '/timeline',
+    icon: 'las la-code-branch',
+  },
+];
 
 const timelines: TimelineType[] = [];
 </script>
@@ -21,7 +23,7 @@ const timelines: TimelineType[] = [];
     <CardPage class="column items-center">
       <CardSectionPageTitle :title="'Timelines'" />
     </CardPage>
-    <BreadCrumb :bread-crumb="breadCrumb" />
+    <BreadCrumb :bread-crumbs="breadCrumbs" />
     <CardPage>
       <CardSectionFirstTimeline v-if="timelines.length <= 0" />
       <q-card-section v-else v-for="timeline in timelines" :key="timeline.uuid">
