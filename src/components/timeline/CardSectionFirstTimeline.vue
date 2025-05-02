@@ -10,6 +10,6 @@ defineOptions({
     <p class="text-info">
       Dê um nome, adicione emojis, escreva uma frase bem legal sobre sua timeline.
     </p>
-    <q-btn rounded color="secondary">Criar timeline</q-btn>
+    <q-btn :to="{ name: 'create-timeline' }" rounded color="secondary">Criar timeline</q-btn>
   </q-card-section>
 </template>
