@@ -1,17 +1,24 @@
 <script setup lang="ts">
 import useVuelidate from '@vuelidate/core';
 import { required } from '@vuelidate/validators';
-// import useTimelineService from 'src/services/timeline.service';
+import useTimelineService from 'src/services/timeline.service';
 import { type TimelineDto } from 'src/types/dto/Timeline.dto';
-import { type Ref, ref } from 'vue';
+import { onMounted, type Ref, ref } from 'vue';
 import 'emoji-picker-element';
 import { insertEmojiAtInput } from 'src/utils/insertEmojiAtInput';
+import { useRoute, useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
+import useNotify from 'src/composables/useNotify';
 
 defineOptions({
   name: 'FormTimeline',
 });
 
-// const service = useTimelineService();
+onMounted(async () => {
+  await getTimeline();
+});
+
+const service = useTimelineService();
 const formTimeline = ref();
 const form: Ref<TimelineDto> = ref({
   title: null,
@@ -21,15 +28,35 @@ const inputRefs = {
   title: ref(),
   description: ref(),
 };
-
 const rules = {
   title: { required },
   description: {},
 };
 const v$ = useVuelidate(rules, form);
 const activeField: Ref<keyof TimelineDto | null> = ref(null);
+const notify = useNotify();
+const { t } = useI18n();
+const route = useRoute();
+const router = useRouter();
+const uuid = route.params.uuid as string;
 
-const handleSubmit = () => {};
+const handleSubmit = async () => {
+  try {
+    if (uuid) {
+      await service.put(uuid, form.value);
+      notify.success(t('success'));
+    } else {
+      await service.post(form.value);
+      notify.success(t('success'));
+      await clear();
+      await router.push({ name: 'list-timeline' });
+    }
+  } catch (error: any) {
+    console.log(error);
+    const message = error?.response?.data?.message ?? error;
+    notify.error(message);
+  }
+};
 
 const setActiveField = (field: keyof TimelineDto) => {
   activeField.value = field;
@@ -55,6 +82,31 @@ const addEmoji = (event: any) => {
       form.value[field] = val;
     },
   });
+};
+
+const clear = async () => {
+  if (uuid) {
+    await getTimeline();
+  } else {
+    form.value = {
+      title: null,
+      description: null,
+    };
+  }
+  formTimeline.value.reset();
+};
+
+const getTimeline = async () => {
+  try {
+    if (uuid) {
+      const data: TimelineDto = await service.findById(uuid);
+      form.value = data;
+    }
+  } catch (error: any) {
+    console.log(error);
+    const message = error?.response?.data?.message ?? error;
+    notify.error(message);
+  }
 };
 </script>
 
