@@ -28,7 +28,42 @@ const { convertBytesToSize } = StorageMemory();
       </q-item-label>
     </q-item-section>
     <q-item-section side>
-      <q-btn dense icon="las la-ellipsis-v" flat round></q-btn>
+      <q-btn icon="las la-ellipsis-v" flat round>
+        <q-menu style="max-width: 350px">
+          <q-list>
+            <q-item
+              clickable
+              :to="{
+                name: 'view-timeline',
+                params: { uuid: timeline.uuid },
+              }"
+            >
+              <q-item-section avatar>
+                <q-icon color="primary" name="las la-play" />
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>Acessar timeline</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-separator />
+            <q-item clickable>
+              <q-item-section avatar>
+                <q-icon color="primary" name="las la-pen" />
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>Editar</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-separator />
+            <q-item clickable>
+              <q-item-section avatar>
+                <q-icon color="negative" name="las la-trash" />
+              </q-item-section>
+              <q-item-section><q-item-label>Excluir</q-item-label></q-item-section>
+            </q-item>
+          </q-list>
+        </q-menu>
+      </q-btn>
     </q-item-section>
   </q-item>
 </template>

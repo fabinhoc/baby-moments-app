@@ -6,6 +6,12 @@ import { type BreadCrumbType } from 'src/types/BreadCrumb.type';
 import { type TimelineType } from 'src/types/Timeline.type';
 import CardSectionFirstTimeline from 'src/components/timeline/CardSectionFirstTimeline.vue';
 import ItemTimeline from 'src/components/timeline/ItemTimeline.vue';
+import useTimelineService from 'src/services/timeline.service';
+import { onMounted, ref, type Ref } from 'vue';
+
+onMounted(async () => {
+  await getTimelines();
+});
 
 const breadCrumbs: BreadCrumbType[] = [
   {
@@ -15,7 +21,12 @@ const breadCrumbs: BreadCrumbType[] = [
   },
 ];
 
-const timelines: TimelineType[] = [];
+const service = useTimelineService();
+const timelines: Ref<TimelineType[]> = ref([]);
+
+const getTimelines = async () => {
+  timelines.value = await service.all();
+};
 </script>
 
 <template>

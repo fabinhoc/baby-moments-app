@@ -85,6 +85,14 @@ const routes: RouteRecordRaw[] = [
           requiresAuth: true,
         },
       },
+      {
+        path: '/timeline/:uuid',
+        name: 'view-timeline',
+        component: () => import('pages/timeline/ViewPage.vue'),
+        meta: {
+          requiresAuth: false,
+        },
+      },
     ],
   },
 
