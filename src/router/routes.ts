@@ -4,24 +4,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
-    children: [
-      { path: '', name: 'index', component: () => import('pages/IndexPage.vue') },
-      {
-        path: '/timelines',
-        name: 'list-timeline',
-        component: () => import('pages/timeline/IndexPage.vue'),
-        meta: {
-          requiresAuth: true,
-        },
-      },
-    ],
-  },
-
-  // Always leave this as last one,
-  // but you can also remove it
-  {
-    path: '/:catchAll(.*)*',
-    component: () => import('pages/ErrorNotFound.vue'),
+    children: [{ path: '', name: 'index', component: () => import('pages/IndexPage.vue') }],
   },
   {
     path: '/auth',
@@ -73,6 +56,51 @@ const routes: RouteRecordRaw[] = [
         },
       },
     ],
+  },
+  {
+    path: '/timeline',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      {
+        path: '',
+        name: 'list-timeline',
+        component: () => import('pages/timeline/IndexPage.vue'),
+        meta: {
+          requiresAuth: true,
+        },
+      },
+      {
+        path: 'new',
+        name: 'create-timeline',
+        component: () => import('pages/timeline/NewPage.vue'),
+        meta: {
+          requiresAuth: true,
+        },
+      },
+      {
+        path: 'edit/:uuid',
+        name: 'edit-timeline',
+        component: () => import('pages/timeline/EditPage.vue'),
+        meta: {
+          requiresAuth: true,
+        },
+      },
+      {
+        path: '/timeline/:uuid',
+        name: 'view-timeline',
+        component: () => import('pages/timeline/ViewPage.vue'),
+        meta: {
+          requiresAuth: false,
+        },
+      },
+    ],
+  },
+
+  // Always leave this as last one,
+  // but you can also remove it
+  {
+    path: '/:catchAll(.*)*',
+    component: () => import('pages/ErrorNotFound.vue'),
   },
 ];
 

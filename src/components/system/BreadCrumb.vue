@@ -7,20 +7,30 @@ defineOptions({
 });
 
 defineProps<{
-  breadCrumb: BreadCrumbType;
+  breadCrumbs: BreadCrumbType[];
 }>();
 </script>
 
 <template>
   <CardPage>
     <q-card-section class="row items-center justify-between q-py-none">
-      <q-btn class="q-pa-none q-ma-none" size="md" flat round icon="las la-undo" color="primary" />
+      <q-btn
+        :to="{ name: 'list-timeline' }"
+        class="q-pa-none q-ma-none"
+        size="md"
+        flat
+        round
+        icon="las la-undo"
+        color="primary"
+      />
       <q-breadcrumbs align="right">
-        <q-breadcrumbs-el icon="las la-home" :to="{ name: 'list-timeline' }" />
+        <q-breadcrumbs-el icon="las la-home" to="/timeline" />
         <q-breadcrumbs-el
+          v-for="(breadCrumb, index) in breadCrumbs"
+          :key="index"
           :label="breadCrumb.label"
           :icon="breadCrumb.icon"
-          :to="{ name: breadCrumb.link }"
+          :to="breadCrumb.link"
         />
       </q-breadcrumbs>
     </q-card-section>

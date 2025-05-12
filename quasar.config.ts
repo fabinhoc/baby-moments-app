@@ -4,7 +4,7 @@
 import { defineConfig } from '#q-app/wrappers';
 import { fileURLToPath } from 'node:url';
 
-export default defineConfig((ctx) => {
+export default defineConfig((ctx: any) => {
   return {
     // https://v2.quasar.dev/quasar-cli-vite/prefetch-feature
     // preFetch: true,
@@ -37,6 +37,15 @@ export default defineConfig((ctx) => {
         browser: ['es2022', 'firefox115', 'chrome115', 'safari14'],
         node: 'node20',
       },
+
+      viteVuePluginOptions: {
+        template: {
+          compilerOptions: {
+            isCustomElement: (tag) => tag === 'emoji-picker',
+          },
+        },
+      },
+
       lint: false,
 
       typescript: {
@@ -138,7 +147,7 @@ export default defineConfig((ctx) => {
       // directives: [],
 
       // Quasar plugins
-      plugins: ['Notify', 'LocalStorage'],
+      plugins: ['Notify', 'LocalStorage', 'Dialog'],
     },
 
     // animations: 'all', // --- includes all animations

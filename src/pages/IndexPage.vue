@@ -53,8 +53,8 @@
 </template>
 
 <script setup lang="ts">
-import CardSection from 'src/components/CardSection.vue';
-import PlanCard from 'src/components/PlanCard.vue';
+import CardSection from 'src/components/dash/CardSection.vue';
+import PlanCard from 'src/components/dash/PlanCard.vue';
 import usePlanService from 'src/services/plan.service';
 import { onBeforeUnmount, onMounted } from 'vue';
 

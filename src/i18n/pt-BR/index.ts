@@ -24,7 +24,7 @@ export default {
       welcome: 'Bem-vindo!',
     },
     components: {
-      timelineForm: {
+      formTimeline: {
         title: 'Título',
         description: 'Descrição',
         save: 'Salvar',
@@ -38,6 +38,7 @@ export default {
         edit: 'Editar',
         signature: 'Minha assinatura',
         logout: 'Sair',
+        timelines: 'Minhas timelines',
       },
       momentForm: {
         title: 'Título',
@@ -118,6 +119,9 @@ export default {
       },
       itemTimeline: {
         memoryUsage: 'Memória Utilizada',
+        accessTimeline: 'Acessar timeline',
+        edit: 'Editar',
+        remove: 'Excluir',
       },
       cardSectionFirstTimeline: {
         title: 'Começe agora criando sua primeira timeline.',

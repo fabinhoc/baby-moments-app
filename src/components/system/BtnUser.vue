@@ -60,6 +60,14 @@ const logoutUser = async () => {
           <q-item-label>{{ $t('app.components.btnUser.signature') }}</q-item-label>
         </q-item-section>
       </q-item>
+      <q-item clickable v-close-popup @click="$router.push({ name: 'list-timeline' })">
+        <q-item-section avatar>
+          <q-avatar icon="las la-code-branch" text-color="primary" flat round />
+        </q-item-section>
+        <q-item-section>
+          <q-item-label>{{ $t('app.components.btnUser.timelines') }}</q-item-label>
+        </q-item-section>
+      </q-item>
       <q-item clickable v-close-popup @click="logoutUser">
         <q-item-section avatar>
           <q-avatar icon="las la-sign-out-alt" text-color="negative" flat round />
