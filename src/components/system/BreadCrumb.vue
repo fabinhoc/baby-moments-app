@@ -14,7 +14,15 @@ defineProps<{
 <template>
   <CardPage>
     <q-card-section class="row items-center justify-between q-py-none">
-      <q-btn class="q-pa-none q-ma-none" size="md" flat round icon="las la-undo" color="primary" />
+      <q-btn
+        :to="{ name: 'list-timeline' }"
+        class="q-pa-none q-ma-none"
+        size="md"
+        flat
+        round
+        icon="las la-undo"
+        color="primary"
+      />
       <q-breadcrumbs align="right">
         <q-breadcrumbs-el icon="las la-home" to="/timeline" />
         <q-breadcrumbs-el

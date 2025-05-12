@@ -4,7 +4,7 @@
 import { defineConfig } from '#q-app/wrappers';
 import { fileURLToPath } from 'node:url';
 
-export default defineConfig((ctx) => {
+export default defineConfig((ctx: any) => {
   return {
     // https://v2.quasar.dev/quasar-cli-vite/prefetch-feature
     // preFetch: true,
@@ -147,7 +147,7 @@ export default defineConfig((ctx) => {
       // directives: [],
 
       // Quasar plugins
-      plugins: ['Notify', 'LocalStorage'],
+      plugins: ['Notify', 'LocalStorage', 'Dialog'],
     },
 
     // animations: 'all', // --- includes all animations

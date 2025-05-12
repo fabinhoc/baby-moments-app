@@ -122,6 +122,9 @@ export default {
       },
       itemTimeline: {
         memoryUsage: 'Memory Usage',
+        accessTimeline: 'Access timeline',
+        edit: 'Edit',
+        remove: 'Delete',
       },
       cardSectionFirstTimeline: {
         title: 'Start now by creating your first timeline.',

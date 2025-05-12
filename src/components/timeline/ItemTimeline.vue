@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { type TimelineType } from 'src/types/Timeline.type';
 import StorageMemory from 'src/utils/StorageMemory';
+import { inject } from 'vue';
 
 defineOptions({
   name: 'ItemTimeline',
@@ -11,6 +12,7 @@ defineProps<{
 }>();
 
 const { convertBytesToSize } = StorageMemory();
+const deleteItem: any = inject('remove');
 </script>
 
 <template>
@@ -42,24 +44,28 @@ const { convertBytesToSize } = StorageMemory();
                 <q-icon color="primary" name="las la-play" />
               </q-item-section>
               <q-item-section>
-                <q-item-label>Acessar timeline</q-item-label>
+                <q-item-label>{{ $t('app.components.itemTimeline.accessTimeline') }}</q-item-label>
               </q-item-section>
             </q-item>
             <q-separator />
-            <q-item clickable>
+            <q-item clickable :to="{ name: 'edit-timeline', params: { uuid: timeline.uuid } }">
               <q-item-section avatar>
                 <q-icon color="primary" name="las la-pen" />
               </q-item-section>
               <q-item-section>
-                <q-item-label>Editar</q-item-label>
+                <q-item-label>{{ $t('app.components.itemTimeline.edit') }}</q-item-label>
               </q-item-section>
             </q-item>
             <q-separator />
-            <q-item clickable>
+            <q-item clickable @click="deleteItem(timeline.uuid)">
               <q-item-section avatar>
                 <q-icon color="negative" name="las la-trash" />
               </q-item-section>
-              <q-item-section><q-item-label>Excluir</q-item-label></q-item-section>
+              <q-item-section
+                ><q-item-label>{{
+                  $t('app.components.itemTimeline.remove')
+                }}</q-item-label></q-item-section
+              >
             </q-item>
           </q-list>
         </q-menu>

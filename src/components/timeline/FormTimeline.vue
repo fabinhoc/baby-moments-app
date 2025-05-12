@@ -9,6 +9,7 @@ import { insertEmojiAtInput } from 'src/utils/insertEmojiAtInput';
 import { useRoute, useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import useNotify from 'src/composables/useNotify';
+import type { TimelineType } from 'src/types/Timeline.type';
 
 defineOptions({
   name: 'FormTimeline',
@@ -45,6 +46,7 @@ const handleSubmit = async () => {
     if (uuid) {
       await service.put(uuid, form.value);
       notify.success(t('success'));
+      await router.push({ name: 'list-timeline' });
     } else {
       await service.post(form.value);
       notify.success(t('success'));
@@ -99,8 +101,8 @@ const clear = async () => {
 const getTimeline = async () => {
   try {
     if (uuid) {
-      const data: TimelineDto = await service.findById(uuid);
-      form.value = data;
+      const data: { data: TimelineType } = await service.findById(uuid);
+      form.value = data.data;
     }
   } catch (error: any) {
     console.log(error);
