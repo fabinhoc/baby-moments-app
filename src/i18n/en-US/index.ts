@@ -131,6 +131,12 @@ export default {
         info: 'Give it a name, add emojis, write a cool phrase about your timeline.',
         btnCreate: 'Create Timeline',
       },
+      itemMoment: {
+        addAlbum: 'Add album',
+        edit: 'Edit',
+        remove: 'Delete',
+        addPhoto: 'Add Photo | Add Photos',
+      },
     },
     pages: {
       timeline: {
@@ -138,6 +144,9 @@ export default {
           title: 'Edit Timeline',
           goBack: 'Go back',
           moment: 'Moment | Moments',
+          addMoment: 'Add Moment',
+          deleteConfirmation:
+            'This action will remove all photos/videos from that moment. Are you sure about that?',
         },
         new: {
           title: 'New Timeline',

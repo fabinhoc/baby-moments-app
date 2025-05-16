@@ -8,6 +8,7 @@ defineOptions({
 
 defineProps<{
   breadCrumbs: BreadCrumbType[];
+  goBack?: object;
 }>();
 </script>
 
@@ -15,7 +16,7 @@ defineProps<{
   <CardPage>
     <q-card-section class="row items-center justify-between q-py-none">
       <q-btn
-        :to="{ name: 'list-timeline' }"
+        :to="goBack ?? { name: 'list-timeline' }"
         class="q-pa-none q-ma-none"
         size="md"
         flat

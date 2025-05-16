@@ -95,6 +95,28 @@ const routes: RouteRecordRaw[] = [
       },
     ],
   },
+  {
+    path: '/moment',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      {
+        path: 'edit/:timelineUuid/:id',
+        name: 'edit-moment',
+        component: () => import('pages/moment/EditPage.vue'),
+        meta: {
+          requiresAuth: true,
+        },
+      },
+      {
+        path: 'new/:timelineUuid',
+        name: 'create-moment',
+        component: () => import('pages/moment/NewPage.vue'),
+        meta: {
+          requiresAuth: true,
+        },
+      },
+    ],
+  },
 
   // Always leave this as last one,
   // but you can also remove it

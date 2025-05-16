@@ -2,6 +2,7 @@ import type { AlbumType } from './Album.type';
 import type { TimelineType } from './Timeline.type';
 
 export interface MomentType {
+  id: number;
   title: string;
   description: string | null;
   avatar: string | null;

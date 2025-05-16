@@ -25,7 +25,7 @@ export default defineBoot(({ app }) => {
   const i18n = createI18n<{ message: MessageSchema }, MessageLanguages>({
     legacy: false,
     locale: 'pt-BR',
-    fallbackLocale: 'en-US',
+    fallbackLocale: 'pt-BR',
     messages,
     datetimeFormats: {
       'en-US': {

@@ -128,6 +128,12 @@ export default {
         info: 'Dê um nome, adicione emojis, escreva uma frase bem legal sobre sua timeline.',
         btnCreate: 'Criar Timeline',
       },
+      itemMoment: {
+        addAlbum: 'Adicionar álbum',
+        edit: 'Editar',
+        remove: 'Excluir',
+        addPhoto: 'Adicionar foto | Adicionar fotos',
+      },
     },
     pages: {
       timeline: {
@@ -135,6 +141,9 @@ export default {
           title: 'Editar Timeline',
           goBack: 'Voltar',
           moment: 'Momento | Momentos',
+          addMoment: 'Adicionar Momento',
+          deleteConfirmation:
+            'Essa ação irá remover todos as fotos/videos desse momento. Está certo disso?',
         },
         new: {
           title: 'Nova Timeline',
