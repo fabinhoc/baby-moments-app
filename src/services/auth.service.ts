@@ -4,6 +4,8 @@ import { useAuthStore } from 'src/stores/auth.store';
 import type { ForgotPasswordDto } from 'src/types/dto/ForgotPassword.dto';
 import type { LoginDto } from 'src/types/dto/Login.dto';
 import type { RegisterDto } from 'src/types/dto/Register.dto';
+import type { UpdatePasswordDto } from 'src/types/dto/UpdatedPassword.dto';
+import type { UserDto } from 'src/types/dto/User.dto';
 import type { UserType } from 'src/types/User.type';
 
 export default function useAuthService() {
@@ -55,6 +57,16 @@ export default function useAuthService() {
     return post(payload);
   };
 
+  const updateUser = (uuid: string, payload: UserDto) => {
+    const { put } = useApi('users');
+    return put<UserType>(uuid, payload);
+  };
+
+  const updatePassword = (uuid: string, payload: UpdatePasswordDto) => {
+    const { api } = useApi('users');
+    return api.put<UserType>(`users/${uuid}/password`, payload);
+  };
+
   return {
     login,
     logout,
@@ -63,5 +75,7 @@ export default function useAuthService() {
     register,
     resendVerification,
     forgotPassword,
+    updateUser,
+    updatePassword,
   };
 }

@@ -144,6 +144,20 @@ const routes: RouteRecordRaw[] = [
       },
     ],
   },
+  {
+    path: '/user',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      {
+        path: 'profile',
+        name: 'profile',
+        component: () => import('pages/user/ProfilePage.vue'),
+        meta: {
+          requiresAuth: true,
+        },
+      },
+    ],
+  },
 
   // Always leave this as last one,
   // but you can also remove it
