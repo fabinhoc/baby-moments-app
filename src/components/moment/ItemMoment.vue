@@ -52,7 +52,13 @@ const deleteItem: any = inject('removeMoment');
       <q-btn icon="las la-ellipsis-v" flat round>
         <q-menu style="max-width: 350px">
           <q-list>
-            <q-item clickable>
+            <q-item
+              clickable
+              :to="{
+                name: 'save-album',
+                params: { timelineUuid: moment.timeline.uuid, id: moment.id },
+              }"
+            >
               <q-item-section avatar>
                 <q-icon color="primary" name="las la-image" />
               </q-item-section>

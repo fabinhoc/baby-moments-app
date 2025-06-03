@@ -4,7 +4,20 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
-    children: [{ path: '', name: 'index', component: () => import('pages/IndexPage.vue') }],
+    children: [
+      {
+        path: '',
+        name: 'index',
+        component: () => import('pages/IndexPage.vue'),
+        meta: { requiresAuth: false },
+      },
+      {
+        path: '/album/:id',
+        name: 'view-album',
+        component: () => import('pages/album/ViewPage.vue'),
+        meta: { requiresAuth: false },
+      },
+    ],
   },
   {
     path: '/auth',
@@ -111,6 +124,20 @@ const routes: RouteRecordRaw[] = [
         path: 'new/:timelineUuid',
         name: 'create-moment',
         component: () => import('pages/moment/NewPage.vue'),
+        meta: {
+          requiresAuth: true,
+        },
+      },
+    ],
+  },
+  {
+    path: '/album',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      {
+        path: 'save/timeline/:timelineUuid/album/:id',
+        name: 'save-album',
+        component: () => import('pages/album/SavePage.vue'),
         meta: {
           requiresAuth: true,
         },

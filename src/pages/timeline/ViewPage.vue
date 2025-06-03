@@ -88,12 +88,12 @@ const handleScroll = async () => {
   <q-page padding @scroll="handleScroll" ref="page">
     <CardPage class="column items-center">
       <CardSectionPageTitle :title="timeline?.title ?? ''" />
+      <h1 class="text-body1 text-center text-secondary">
+        {{ timeline?.description }}
+      </h1>
     </CardPage>
-    <h1 class="text-body1 text-center text-secondary">
-      {{ timeline?.description }}
-    </h1>
 
-    <div class="column items-center justify-start q-mb-xl">
+    <CardPage class="column items-center justify-start q-mb-xl q-mt-md">
       <q-timeline :layout="'loose'" color="secondary">
         <q-timeline-entry
           class="custom-avatar"
@@ -106,14 +106,17 @@ const handleScroll = async () => {
         >
           <template v-slot:title>
             <router-link
-              class="text-primary poppins-semibold all-pointer-events cursor-pointer text-underline"
+              class="poppins-semibold all-pointer-events cursor-pointer text-underline"
+              :style="{ color: moment.theme ?? 'text-primary' }"
               :to="{
                 name: 'view-album',
                 params: {
+                  timelineUuid: moment.timeline.uuid,
                   id: moment.album.id,
                 },
               }"
             >
+              <q-icon name="las la-link" size="12px" style="margin-top: -1px"></q-icon>
               {{ moment.title }}
             </router-link>
           </template>
@@ -122,12 +125,18 @@ const handleScroll = async () => {
               {{ moment.moment_date }}
             </div>
           </template>
-          <div class="description poppins-semibold text-grey text-body1">
-            {{ moment.description }}
+          <div class="description poppins-light text-grey text-caption wrap">
+            <CardPage
+              :style="{ backgroundColor: moment.theme }"
+              class="q-pa-sm text-white"
+              :class="index % 2 === 0 ? 'text-right' : 'text-left'"
+            >
+              {{ moment.description }}
+            </CardPage>
           </div>
         </q-timeline-entry>
       </q-timeline>
-    </div>
+    </CardPage>
   </q-page>
 </template>
 
@@ -136,7 +145,7 @@ const handleScroll = async () => {
   top: 87px !important;
 }
 .custom-avatar {
-  min-height: 100px;
+  min-height: 80px;
   opacity: 0;
   transform: translateY(30px);
   transition:
@@ -150,7 +159,7 @@ const handleScroll = async () => {
 }
 
 .custom-avatar .q-timeline__dot {
-  width: 80px !important;
+  width: 40px !important;
 }
 
 .text-underline {
@@ -160,12 +169,12 @@ const handleScroll = async () => {
 .custom-avatar .q-timeline__dot::before {
   width: 80px !important;
   height: 80px !important;
-  left: -25px;
+  left: -24px;
 }
 .custom-avatar .q-timeline__dot-img {
   width: 80px !important;
   height: 80px !important;
-  left: -25px;
+  left: -24px;
   border: 4px solid var(--border-color) !important;
 }
 .custom-avatar .q-timeline__title {
@@ -179,6 +188,6 @@ const handleScroll = async () => {
 }
 .custom-avatar,
 .q-timeline__entry {
-  padding-bottom: 100px !important;
+  padding-bottom: 60px !important;
 }
 </style>

@@ -174,7 +174,7 @@ export default {
       album: {
         save: {
           goBack: 'Voltar',
-          title: 'Álbum de fotos/vídeos',
+          title: 'Meus arquivos',
           totalMemoryUsed: 'Total de espaço utilizado',
         },
       },

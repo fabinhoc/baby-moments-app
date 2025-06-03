@@ -177,7 +177,7 @@ export default {
       album: {
         save: {
           goBack: 'Go back',
-          title: 'Photos/videos album',
+          title: 'My files',
           totalMemoryUsed: 'Total Memory Usage',
         },
       },

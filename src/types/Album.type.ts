@@ -5,7 +5,7 @@ export interface AlbumType {
   id: number;
   moment: MomentType;
   memory_usage: number;
-  album_files: AlbumFileType[];
+  album_files: { data: AlbumFileType[] };
   created_at: Date;
   updated_at: Date;
 }
