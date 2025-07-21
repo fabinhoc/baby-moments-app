@@ -1,42 +1,62 @@
 <script setup lang="ts">
+import useDialog from 'src/composables/useDialog';
+import useNotify from 'src/composables/useNotify';
+import usePlanService from 'src/services/plan.service';
+import { useAuthStore } from 'src/stores/auth.store';
+import { type PlanType } from 'src/types/Plan.type';
 import { ref, type Ref } from 'vue';
+// import { useRouter } from 'vue-router';
+import CardPage from '../system/CardPage.vue';
 
 defineOptions({
   name: 'PlanCard',
 });
 
+defineProps<{
+  plan: PlanType;
+}>();
 const loading: Ref<boolean> = ref(false);
-const plan: any = {
-  name: 'Plano básico',
-  description: '80GB de armazenamento para suas fotos e vídeos',
-  price: 11.99,
-  options: [
-    {
-      check: true,
-      title: 'Armazenamento de 80GB.',
-    },
-    {
-      check: true,
-      title: 'Timelines ilimitadas.',
-    },
-    {
-      check: true,
-      title: 'Adicione fotos e vídeos nos seus álbuns.',
-    },
-    {
-      check: true,
-      title: 'Armazenamento seguro utilizando a maior provedora do mundo.',
-    },
-  ],
+const { isSubscribed } = useAuthStore();
+const dialog = useDialog();
+const service = usePlanService();
+const notify = useNotify();
+// const router = useRouter();
+
+const handleSubscription = async (plan: any) => {
+  if (!isSubscribed) {
+    return await subscribe(plan);
+  }
+
+  dialog.confirm('Alterar plano!', 'Deseja realmente fazer a alteração do seu plano?').onOk(() => {
+    void (async () => {
+      await subscribe(plan);
+    })();
+  });
 };
 
-const handleSubscription = (plan: any) => {
-  console.log(plan);
+const subscribe = async (plan: PlanType) => {
+  try {
+    loading.value = true;
+    const { data }: any = await service.subscribe(plan);
+    loading.value = false;
+    notify.success(data.message);
+    if (data.url) {
+      window.location.href = data.url;
+      return;
+    }
+
+    // await router.push({ name: 'list-timeline' });
+  } catch (error: any) {
+    console.log(error);
+    loading.value = false;
+    const message = error?.response?.data?.message ?? error;
+    notify.error(message);
+  }
 };
 </script>
 
 <template>
-  <q-card class="q-pa-none column q-gutter-xs">
+  <CardPage class="q-pa-none">
     <q-card-section class="text-center q-ma-none">
       <h2 class="text-h4 text-bold text-primary">
         {{ plan.name }}
@@ -66,9 +86,15 @@ const handleSubscription = (plan: any) => {
       </q-list>
     </q-card-section>
     <q-card-actions>
-      <q-btn color="primary" class="full-width" @click="handleSubscription(plan)" :loading="loading"
+      <q-btn
+        outline
+        rounded
+        color="primary"
+        class="full-width"
+        @click="handleSubscription(plan)"
+        :loading="loading"
         >Eu quero!</q-btn
       >
     </q-card-actions>
-  </q-card>
+  </CardPage>
 </template>

@@ -265,6 +265,15 @@ export default {
         hasAnAccount: 'I already an account',
         title: 'Create an account',
       },
+      checkout: {
+        title: 'Select a plan to continue',
+      },
+      receivedPayment: {
+        title: 'Pagamento realizado!',
+      },
+      paymentError: {
+        title: 'Pagamento não processado.',
+      },
     },
   },
 };

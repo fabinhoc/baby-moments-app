@@ -19,6 +19,6 @@ export interface UserType {
   email_verified_at: Date | null;
   available_memory: number | null;
   memory_used: number | null;
-  subscription: SubscriptionType;
+  subscriptions: SubscriptionType[];
   plan: PlanType | null;
 }

@@ -46,6 +46,7 @@ export const useAuthStore = defineStore('auth', {
   getters: {
     isLoggedIn: (state) => !!state.token,
     isEmailVerified: (state) => !!state.user?.email_verified_at,
-    isSubscribed: (state) => state.user?.subscription?.stripe_status === 'active',
+    isSubscribed: (state) =>
+      state.user?.subscriptions?.filter((sb) => sb.stripe_status === 'active').length > 0,
   },
 });

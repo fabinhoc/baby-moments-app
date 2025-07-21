@@ -17,6 +17,30 @@ const routes: RouteRecordRaw[] = [
         component: () => import('pages/album/ViewPage.vue'),
         meta: { requiresAuth: false },
       },
+      {
+        path: '/received-payment',
+        name: 'received-payment',
+        component: () => import('pages/signature/RecievedPaymentPage.vue'),
+        meta: {
+          requiresAuth: true,
+        },
+      },
+      {
+        path: '/checkout',
+        name: 'checkout',
+        component: () => import('pages/signature/CheckoutPage.vue'),
+        meta: {
+          requiresAuth: true,
+        },
+      },
+      {
+        path: '/payment-error',
+        name: 'payment-error',
+        component: () => import('pages/signature/PaymentErrorPage.vue'),
+        meta: {
+          requiresAuth: true,
+        },
+      },
     ],
   },
   {

@@ -5,7 +5,8 @@ export default function usePlanService() {
   const { get, post, put, all, remove, findById } = useApi('plans');
 
   const subscribe = (plan: PlanType) => {
-    return post<PlanType>(`plans/subscribe/${plan.id}`);
+    const { api } = useApi('plans');
+    return api.post(`plans/subscribe/${plan.id}`);
   };
 
   return {

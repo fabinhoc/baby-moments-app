@@ -262,6 +262,15 @@ export default {
         errorMessage: 'Ocorreu um erro ao realizar login. Tente novamente!',
         backToLogin: 'Voltar para login',
       },
+      checkout: {
+        title: 'Selecione um plano para continuar',
+      },
+      recievedPayment: {
+        title: 'Pagamento realizado!',
+      },
+      paymentError: {
+        title: 'Pagamento não processado.',
+      },
     },
   },
 };
