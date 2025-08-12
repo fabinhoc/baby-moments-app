@@ -52,6 +52,11 @@ const remove = () => {
     notify.error(message);
   }
 };
+
+const updatePaymentMethod = async () => {
+  const { data } = await service.updatePaymentMethod();
+  window.location.href = data.url;
+};
 </script>
 
 <template>
@@ -132,6 +137,25 @@ const remove = () => {
             :to="{ name: 'checkout' }"
             >{{ $t('app.pages.user.profile.upgrade') }}</q-btn
           >
+        </div>
+      </q-card-section>
+
+      <q-card-section class="column q-col-gutter-md">
+        <div>
+          <ProfileSectionTitle :title="'Cartão atual'" :icon="'las la-money-check-alt'" />
+        </div>
+        <div>
+          <q-list bordered>
+            <q-item>
+              <q-item-section avatar>
+                <q-icon name="las la-credit-card"></q-icon>
+              </q-item-section>
+              <q-item-section> {{ user.current_card?.last4 }} </q-item-section>
+              <q-item-section side>
+                <q-btn @click="updatePaymentMethod" flat round icon="las la-pen"></q-btn>
+              </q-item-section>
+            </q-item>
+          </q-list>
         </div>
       </q-card-section>
 

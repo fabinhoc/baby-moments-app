@@ -5,6 +5,19 @@ interface SubscriptionType {
   plan: PlanType;
 }
 
+interface UserCard {
+  brand: string;
+  last4: string;
+}
+
+interface UserInvoice {
+  amount: string;
+  card: UserCard;
+  date: string;
+  pdf_url: string;
+  status: string;
+}
+
 export interface UserType {
   name: string;
   uuid: string;
@@ -17,4 +30,6 @@ export interface UserType {
   memory_used: number | null;
   subscription: SubscriptionType;
   plan: PlanType | null;
+  current_card: UserCard | null;
+  invoices: UserInvoice[];
 }

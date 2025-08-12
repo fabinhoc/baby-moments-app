@@ -72,6 +72,11 @@ export default function useAuthService() {
     return remove<any>(uuid);
   };
 
+  const updatePaymentMethod = () => {
+    const { api } = useApi('users');
+    return api.get<any>(`users/portal-session`);
+  };
+
   return {
     login,
     logout,
@@ -83,5 +88,6 @@ export default function useAuthService() {
     updateUser,
     updatePassword,
     remove,
+    updatePaymentMethod,
   };
 }
