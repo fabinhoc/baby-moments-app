@@ -67,6 +67,11 @@ export default function useAuthService() {
     return api.put<UserType>(`users/${uuid}/password`, payload);
   };
 
+  const remove = (uuid: string) => {
+    const { remove } = useApi('users');
+    return remove<any>(uuid);
+  };
+
   return {
     login,
     logout,
@@ -77,5 +82,6 @@ export default function useAuthService() {
     forgotPassword,
     updateUser,
     updatePassword,
+    remove,
   };
 }

@@ -1,20 +1,17 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia';
 import { useAuthStore } from 'src/stores/auth.store';
 import StorageMemory from 'src/utils/StorageMemory';
-import { computed, type ComputedRef } from 'vue';
 
 defineOptions({
   name: 'BtnConfig',
 });
 
 //usar storeToRefs
-const spacingPlan: ComputedRef<number> = computed(() => {
-  const { user } = useAuthStore();
-  return user.memory_used ? user.memory_used : 0;
-});
+const authStore = useAuthStore();
+const { user } = storeToRefs(authStore);
 const { convertBytesToSize } = StorageMemory();
-
-const spacingPlanLabel: ComputedRef<string> = computed(() => convertBytesToSize(spacingPlan.value));
+// const slider: Ref<string> = ref(convertBytesToSize(user.value.memory_used as number));
 </script>
 
 <template>
@@ -36,22 +33,22 @@ const spacingPlanLabel: ComputedRef<string> = computed(() => convertBytesToSize(
               <template #default>
                 <q-slider
                   :min="0"
-                  :max="161061273600"
-                  v-model="spacingPlan"
+                  :max="user.subscription.plan.available_memory"
+                  :model-value="Number(user.memory_used)"
                   readonly
                   color="positive"
                   label-always
                   switch-label-side
-                  :label-value="spacingPlanLabel"
+                  :label-value="convertBytesToSize(user.memory_used as number)"
                 >
                 </q-slider>
               </template>
             </q-item-section>
             <q-item-section side>
-              {{ convertBytesToSize(161061273600) }}
+              {{ convertBytesToSize(user.subscription.plan.available_memory) }}
             </q-item-section>
           </q-item>
-          <q-item clickable v-close-popup>
+          <q-item clickable v-close-popup :to="{ name: 'checkout' }">
             <q-item-section class="text-primary">
               <q-item-label>{{ $t('app.components.btnConfig.doUpgrade') }} </q-item-label>
             </q-item-section>
