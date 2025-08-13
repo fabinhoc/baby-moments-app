@@ -20,6 +20,7 @@ api.defaults.headers.common['X-Localization'] = localStorage.getItem('user-lang'
 api.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem(
   '@baby-moments:token',
 )}`;
+api.defaults.withCredentials = true;
 
 export default defineBoot(({ app }) => {
   // for use inside Vue files (Options API) through this.$axios and this.$api
