@@ -36,7 +36,7 @@ export default function useAuthService() {
   };
 
   const verifyEmail = async (url: string) => {
-    url = url.replace(process.env.API_URL as string, '');
+    url = url.replace(import.meta.env.VITE_API_URL as string, '');
     const { get } = useApi(url);
     return await get();
   };

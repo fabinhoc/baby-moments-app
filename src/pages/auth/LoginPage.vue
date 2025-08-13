@@ -2,7 +2,7 @@
 import LoginForm from 'src/components/auth/LoginForm.vue';
 
 const socialLogin = (provider: string) => {
-  window.location.href = `${process.env.API_URL}/auth/${provider}/redirect`;
+  window.location.href = `${import.meta.env.VITE_API_URL}/auth/${provider}/redirect`;
 };
 </script>
 

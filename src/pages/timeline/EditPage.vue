@@ -54,7 +54,7 @@ const getTimeline = async () => {
       const momentsValues: MomentType[] = momentsCollection.data.map((moment: any) => {
         return {
           ...moment,
-          avatar: moment.avatar ? `${process.env.STORAGE_URL}${moment.avatar}` : null, // Adiciona a URL
+          avatar: moment.avatar ? `${import.meta.env.VITE_STORAGE_URL}${moment.avatar}` : null, // Adiciona a URL
         };
       });
       moments.value = momentsValues;
