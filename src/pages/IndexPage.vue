@@ -29,7 +29,11 @@
     </CardSection>
     <CardSection :title="'Destaques'"></CardSection>
     <CardSection :title="'Planos'">
-      <PlanCard />
+      <div class="column q-gutter-md">
+        <div v-for="plan in plans" :key="plan.id">
+          <PlanCard bordered :flat="false" :plan="plan" />
+        </div>
+      </div>
     </CardSection>
     <CardSection :title="'Perguntas Frequentes'">
       <q-list>
@@ -55,13 +59,17 @@
 <script setup lang="ts">
 import CardSection from 'src/components/dash/CardSection.vue';
 import PlanCard from 'src/components/dash/PlanCard.vue';
+import useNotify from 'src/composables/useNotify';
 import usePlanService from 'src/services/plan.service';
-import { onBeforeUnmount, onMounted } from 'vue';
+import type { PlanType } from 'src/types/Plan.type';
+import { onBeforeUnmount, onMounted, type Ref, ref } from 'vue';
 
 const service = usePlanService();
+const plans: Ref<PlanType[]> = ref([]);
+const notify = useNotify();
 
 onMounted(async () => {
-  await test();
+  await getPlans();
   document.body.classList.add('body-bg-white');
 });
 
@@ -69,12 +77,14 @@ onBeforeUnmount(() => {
   document.body.classList.remove('body-bg-white');
 });
 
-const test = async () => {
+const getPlans = async () => {
   try {
-    const t: any = await service.all();
-    console.log(t);
+    const response: PlanType[] = await service.all();
+    plans.value = response;
   } catch (error: any) {
     console.log(error);
+    const message = error?.response?.data?.message ?? error;
+    notify.error(message);
   }
 };
 

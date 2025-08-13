@@ -230,15 +230,14 @@ export default {
           infoTitle: 'Personal information',
           updatePasswordTitle: 'Update your password',
           sigature: 'My signature',
-          signatureInfo:
-            "You are currently using the <span class='text-uppercase text-weight-bold'>{signature}</span> signature",
+          signatureInfo: 'You are currently using the {signature} signature',
           history: 'History',
           adquiredSignature:
             "Purchased subscription <span class='text-uppercase text-weight-bold'>{signature}</span> of <span class='text-uppercase text-weight-bold'>{size}</span by <span class='text-uppercase text-weight-bold'>{price}</span>",
           labelSlider: 'Available space:',
           upgrade: 'Do upgrade',
           cancelSignature: 'Cancel your signature',
-          accountTitle: 'My account',
+          accountTitle: 'Remove my account',
           deleteAccountInfo:
             "If you choose to delete your account, all of your data and photos/videos will be <span class='text-uppercase text-weight-bold'>deleted</span> from our database. You will <span class='text-uppercase text-weight-bold'>no longer have access to the platform</span> and it will not be possible to <span class='text-uppercase text-weight-bold'>recover your data again</span>.",
           btnDelete: 'I AM AWARE, Delete my account',
@@ -264,6 +263,15 @@ export default {
       register: {
         hasAnAccount: 'I already an account',
         title: 'Create an account',
+      },
+      checkout: {
+        title: 'Select a plan to continue',
+      },
+      receivedPayment: {
+        title: 'Pagamento realizado!',
+      },
+      paymentError: {
+        title: 'Pagamento não processado.',
       },
     },
   },

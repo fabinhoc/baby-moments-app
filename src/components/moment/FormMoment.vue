@@ -145,7 +145,9 @@ const getMoment = async () => {
     if (id) {
       const data: { data: MomentType } = await service.findById(id);
       form.value = data.data;
-      form.value.avatar = data.data.avatar ? process.env.STORAGE_URL + data.data.avatar : null;
+      form.value.avatar = data.data.avatar
+        ? import.meta.env.VITE_STORAGE_URL + data.data.avatar
+        : null;
 
       if (form.value.avatar) {
         thumbImage.value = form.value.avatar;

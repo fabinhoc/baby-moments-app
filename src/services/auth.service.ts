@@ -36,7 +36,7 @@ export default function useAuthService() {
   };
 
   const verifyEmail = async (url: string) => {
-    url = url.replace(process.env.API_URL as string, '');
+    url = url.replace(import.meta.env.VITE_API_URL as string, '');
     const { get } = useApi(url);
     return await get();
   };
@@ -67,6 +67,16 @@ export default function useAuthService() {
     return api.put<UserType>(`users/${uuid}/password`, payload);
   };
 
+  const remove = (uuid: string) => {
+    const { remove } = useApi('users');
+    return remove<any>(uuid);
+  };
+
+  const updatePaymentMethod = () => {
+    const { api } = useApi('users');
+    return api.get<any>(`users/portal-session`);
+  };
+
   return {
     login,
     logout,
@@ -77,5 +87,7 @@ export default function useAuthService() {
     forgotPassword,
     updateUser,
     updatePassword,
+    remove,
+    updatePaymentMethod,
   };
 }

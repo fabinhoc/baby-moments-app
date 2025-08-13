@@ -1,12 +1,21 @@
 import type { PlanType } from './Plan.type';
 
 interface SubscriptionType {
-  type: string;
   stripe_status: string;
-  trial_ends_at: Date;
-  ends_at: Date;
-  created_at: Date;
-  updated_at: Date;
+  plan: PlanType;
+}
+
+interface UserCard {
+  brand: string;
+  last4: string;
+}
+
+interface UserInvoice {
+  amount: string;
+  card: UserCard;
+  date: string;
+  pdf_url: string;
+  status: string;
 }
 
 export interface UserType {
@@ -21,4 +30,6 @@ export interface UserType {
   memory_used: number | null;
   subscription: SubscriptionType;
   plan: PlanType | null;
+  current_card: UserCard | null;
+  invoices: UserInvoice[];
 }

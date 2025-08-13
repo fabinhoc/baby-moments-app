@@ -230,15 +230,14 @@ export default {
           infoTitle: 'Informações pessoais',
           updatePasswordTitle: 'Alterar Senha',
           sigature: 'Minha Assinatura',
-          signatureInfo:
-            "Atualmente você está utilizando a assinatura <span class='text-uppercase text-weight-bold'>{signature}</span>",
+          signatureInfo: 'Atualmente você está utilizando a assinatura {signature}',
           history: 'Histórico',
           adquiredSignature:
             "Adquiriu assinatura <span class='text-uppercase text-weight-bold'>{signature}</span> de <span class='text-uppercase text-weight-bold'>{size}</span> por <span class='text-uppercase text-weight-bold'>{price}</span>",
           labelSlider: 'Espaço disponível:',
           upgrade: 'Fazer upgrade',
           cancelSignature: 'Cancelar Assinatura',
-          accountTitle: 'Minha conta',
+          accountTitle: 'Excluir minha conta',
           deleteAccountInfo:
             "Se você optar em excluir sua conta, todos os seus dados e fotos/vídeos serão <span class='text-uppercase text-weight-bold'>excluídos</span> da nossa base de dados. Você <span class='text-uppercase text-weight-bold'>não terá mais acesso à plataforma</span> e não será possível <span class='text-uppercase text-weight-bold'>recuperar seus dados novamente</span>.",
           btnDelete: 'ESTOU CIENTE, Excluir minha conta',
@@ -261,6 +260,15 @@ export default {
         redirecting: 'Redirecionando...',
         errorMessage: 'Ocorreu um erro ao realizar login. Tente novamente!',
         backToLogin: 'Voltar para login',
+      },
+      checkout: {
+        title: 'Selecione um plano para continuar',
+      },
+      recievedPayment: {
+        title: 'Pagamento realizado!',
+      },
+      paymentError: {
+        title: 'Pagamento não processado.',
       },
     },
   },

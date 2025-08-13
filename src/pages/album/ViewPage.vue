@@ -33,7 +33,7 @@ const getAlbum = async () => {
       albumFiles.value = response.data.album_files.data.map((file: any) => {
         return {
           ...file,
-          file_path: `${process.env.STORAGE_URL}${file.file_path}`, // Adiciona a URL
+          file_path: `${import.meta.env.VITE_STORAGE_URL}${file.file_path}`, // Adiciona a URL
         };
       });
       theme.value = response.data.moment.theme as string;
