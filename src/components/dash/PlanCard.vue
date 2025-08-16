@@ -5,8 +5,8 @@ import usePlanService from 'src/services/plan.service';
 import { useAuthStore } from 'src/stores/auth.store';
 import { type PlanType } from 'src/types/Plan.type';
 import { ref, type Ref } from 'vue';
-// import { useRouter } from 'vue-router';
 import CardPage from '../system/CardPage.vue';
+import { useRouter } from 'vue-router';
 
 defineOptions({
   name: 'PlanCard',
@@ -16,14 +16,19 @@ defineProps<{
   plan: PlanType;
 }>();
 const loading: Ref<boolean> = ref(false);
-const { isSubscribed } = useAuthStore();
+const authStore = useAuthStore();
 const dialog = useDialog();
 const service = usePlanService();
 const notify = useNotify();
-// const router = useRouter();
+const router = useRouter();
 
 const handleSubscription = async (plan: any) => {
-  if (!isSubscribed) {
+  if (!authStore.isLoggedIn) {
+    await router.push({ name: 'login' });
+    return;
+  }
+
+  if (!authStore.isSubscribed) {
     return await subscribe(plan);
   }
 

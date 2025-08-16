@@ -8,7 +8,10 @@
         Armazene na nuvem as fotos e vídeos de momentos importantes do seu bebê. Organize-os por
         mês, dia, ano... da forma que preferir.
       </h2>
-      <q-btn push unelevated color="primary">Criar conta</q-btn>
+      <q-btn to="/auth/register" push unelevated color="primary">Criar conta</q-btn>
+      <q-btn to="/auth/login" push class="q-ma-sm" unelevated color="secondary"
+        >Já tenho conta</q-btn
+      >
     </article>
     <CardSection :title="'Como Funciona'">
       <q-list>

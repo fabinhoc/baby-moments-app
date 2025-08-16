@@ -37,7 +37,7 @@ const socialLogin = (provider: string) => {
               icon="lab la-google-plus"
               class="text-google-plus"
             />
-            <q-btn @click="socialLogin('microsoft')" round>
+            <!-- <q-btn @click="socialLogin('microsoft')" round>
               <q-icon>
                 <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
                   <path fill="#ff5722" d="M6 6H22V22H6z" />
@@ -46,19 +46,30 @@ const socialLogin = (provider: string) => {
                   <path fill="#03a9f4" d="M6 26H22V42H6z" />
                 </svg>
               </q-icon>
-            </q-btn>
+            </q-btn> -->
           </div>
         </div>
       </q-card-section>
 
       <q-card-actions class="q-mb-n-lg">
-        <div class="q-mt-lg row justify-center">
-          <q-btn @click="$router.push({ name: 'forgot-password' })" color="primary-light-500" flat>
-            {{ $t('app.pages.login.forgotPassword') }}
-          </q-btn>
-          <q-btn to="/auth/register" color="negative" flat>
-            {{ $t('app.pages.login.createAccount') }}
-          </q-btn>
+        <div class="q-mt-lg column justify-center">
+          <div>
+            <q-btn
+              @click="$router.push({ name: 'forgot-password' })"
+              color="primary-light-500"
+              flat
+            >
+              {{ $t('app.pages.login.forgotPassword') }}
+            </q-btn>
+            <q-btn to="/auth/register" color="negative" flat>
+              {{ $t('app.pages.login.createAccount') }}
+            </q-btn>
+          </div>
+          <div class="justify-center text-center">
+            <q-btn link @click="$router.push({ name: 'index' })" color="accent" flat
+              >Voltar para pagina inicial</q-btn
+            >
+          </div>
         </div>
       </q-card-actions>
     </q-card>

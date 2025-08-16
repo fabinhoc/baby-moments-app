@@ -22,6 +22,9 @@ defineOptions({
         <q-btn @click="$router.push({ name: 'login' })" color="accent" flat>{{
           $t('app.pages.register.hasAnAccount')
         }}</q-btn>
+        <q-btn link @click="$router.push({ name: 'index' })" color="accent" flat
+          >Voltar para pagina inicial</q-btn
+        >
       </q-card-section>
     </q-card>
   </q-page>
