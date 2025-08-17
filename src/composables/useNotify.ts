@@ -1,3 +1,4 @@
+import type { QNotifyAction } from 'quasar';
 import { useQuasar } from 'quasar';
 
 export default function useNotify() {
@@ -21,11 +22,12 @@ export default function useNotify() {
     });
   };
 
-  const info = (message: string) => {
+  const info = (message: string, actions?: QNotifyAction[]) => {
     $q.notify({
       type: 'info',
       message: message,
       position: 'top-right',
+      actions: actions ?? [],
     });
   };
 
