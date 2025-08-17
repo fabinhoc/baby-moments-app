@@ -38,8 +38,7 @@ export default defineRouter(function (/* { store, ssrContext } */) {
     if (to.matched.some((record) => record.meta.requiresAuth)) {
       const { isLoggedIn, isEmailVerified, isSubscribed } = useAuthStore();
       if (!isLoggedIn) {
-        next({ name: 'login' });
-        return;
+        return next({ name: 'login' });
       }
 
       if (
@@ -47,20 +46,26 @@ export default defineRouter(function (/* { store, ssrContext } */) {
         to.name !== 'email-verification' &&
         !isEmailVerified
       ) {
-        next({ name: 'email-verification' });
-        return;
+        return next({ name: 'email-verification' });
       }
 
-      const whiteListPages: Array<string> = ['email-verification', 'checkout', 'received-payment'];
+      const whiteListPagesTo: Array<string> = [
+        'email-verification',
+        'checkout',
+        'received-payment',
+      ];
+      const whiteListPagesFrom: Array<string> = ['email-verification', 'received-payment'];
 
-      console.log(isSubscribed);
+      const fromName = from.name ?? '';
+      const toName = to.name ?? '';
+      console.log('from:', fromName, 'to:', toName, 'isSubscribed:', isSubscribed);
       if (
-        !whiteListPages.includes(from.name as string) &&
-        !whiteListPages.includes(to.name as string) &&
+        !whiteListPagesFrom.includes(fromName as string) &&
+        !whiteListPagesTo.includes(toName as string) &&
         !isSubscribed
       ) {
-        next({ name: 'checkout' });
-        return;
+        console.log('tinha que redirecionar para checkout ', isSubscribed);
+        return next({ name: 'checkout' });
       }
 
       next();
